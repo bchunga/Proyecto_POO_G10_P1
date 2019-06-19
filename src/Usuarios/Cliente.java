@@ -11,19 +11,21 @@ import java.util.ArrayList;
  *
  * @author Kevin Blum
  */
-public class Cliente {
+public class Cliente extends Usuario {
     private String ocupacion;
     private String ingresosMensuales;
     private ArrayList solicitudesPendientes;
     private ArrayList solicitudesRespondidas;
 
-    public Cliente(String ocupacion, String ingresosMensuales, ArrayList solicitudesPendientes, ArrayList solicitudesRespondidas) {
+    public Cliente(String ocupacion, String ingresosMensuales, ArrayList solicitudesPendientes, ArrayList solicitudesRespondidas, String dni, String nombre, String usuario) {
+        super(dni, nombre, usuario);
         this.ocupacion = ocupacion;
         this.ingresosMensuales = ingresosMensuales;
         this.solicitudesPendientes = solicitudesPendientes;
         this.solicitudesRespondidas = solicitudesRespondidas;
     }
 
+    
     public String getOcupacion() {
         return ocupacion;
     }
