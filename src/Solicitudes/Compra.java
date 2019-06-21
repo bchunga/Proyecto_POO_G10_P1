@@ -5,21 +5,19 @@
  */
 package Solicitudes;
 
-import Usuarios.Vendedor;
+import Usuarios.Supervisor;
 import java.util.Date;
 
 /**
  *
  * @author Kevin Blum
  */
-public class Cotizacion extends Solicitud {
-    private Vendedor idVendedor;
+public class Compra extends Solicitud {
+    private Supervisor idSupervisor;
 
-    public Cotizacion(int id, Date fecha, String estado, int idVehiculo, Vendedor idVendedor) {
+    public Compra(int id, Date fecha, String estado, int idVehiculo, Supervisor idSupervisor) {
         super(id, fecha, estado, idVehiculo);
-        this.idVendedor= idVendedor;
+        this.idSupervisor= idSupervisor;
     }
-
-   
     
 }

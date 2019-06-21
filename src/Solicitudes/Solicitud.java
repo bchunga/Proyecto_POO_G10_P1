@@ -5,10 +5,25 @@
  */
 package Solicitudes;
 
+import java.util.Date;
+
 /**
  *
- * @author kexbl
+ * @author Kevin Blum
  */
 public class Solicitud {
+    private int id;
+    private Date fecha;
+    private String estado;
+    private int idVehiculo;
+
+    public Solicitud(int id, Date fecha, String estado, int idVehiculo) {
+        this.id = id;
+        this.fecha = fecha;
+        this.estado = estado;
+        this.idVehiculo = idVehiculo;
+    }
+    
+    
     
 }
