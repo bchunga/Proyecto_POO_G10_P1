@@ -6,7 +6,8 @@
 package Usuarios;
 
 import java.util.ArrayList;
-
+import Solicitudes.Compra;
+import Usuarios.*;
 /**
  *
  * @author Kevin Blum
@@ -28,5 +29,30 @@ public class Supervisor extends Usuario {
         return "Supervisor{" + "id=" + id + ", solicitudesCompra=" + solicitudesCompra + ", cerfificadosAcademicos=" + cerfificadosAcademicos + '}';
     }
     
+    public void aprobarCompra(Compra compra){
+        compra.setEstado("Aprobada");
+        Cliente cliente=compra.getCliente();
+        
+        ArrayList pendCliente=cliente.getSolicitudesPendientes();
+        pendCliente.remove(compra);
+        cliente.setSolicitudesPendientes(pendCliente);
+        
+        ArrayList solCliente=cliente.getSolicitudesRespondidas();
+        solCliente.add(compra);
+        cliente.setSolicitudesRespondidas(solCliente);
+    }
+    
+    public void rechazarCompra(Compra compra, String motivo){
+        compra.setEstado("Rechazada: "+motivo );
+        Cliente cliente=compra.getCliente();
+        
+        ArrayList pendCliente=cliente.getSolicitudesPendientes();
+        pendCliente.remove(compra);
+        cliente.setSolicitudesPendientes(pendCliente);
+        
+        ArrayList solCliente=cliente.getSolicitudesRespondidas();
+        solCliente.add(compra);
+        cliente.setSolicitudesRespondidas(solCliente);
+    }
     
 }

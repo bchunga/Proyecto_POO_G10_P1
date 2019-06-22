@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package Solicitudes;
-
+import Usuarios.*;
+import Vehiculos.*;
 import java.util.Date;
 
 /**
@@ -16,10 +17,9 @@ public class Mantenimiento extends Solicitud{
     private String estadoM;
     private float costoMant;
 
-    public Mantenimiento(float kilometrajeVeh, String estadoM, float costoMant, int id, Date fecha, String estado, int idVehiculo) {
-        super(id, fecha, estado, idVehiculo);
+    public Mantenimiento(float kilometrajeVeh, float costoMant, Cliente cliente, Date fecha, String estado, Vehiculo vehiculo) {
+        super(cliente, fecha, vehiculo);
         this.kilometrajeVeh = kilometrajeVeh;
-        this.estadoM = estadoM;
         this.costoMant = costoMant;
     }
 

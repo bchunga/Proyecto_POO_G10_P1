@@ -5,7 +5,8 @@
  */
 package Solicitudes;
 
-import Usuarios.Supervisor;
+import Usuarios.*;
+import Vehiculos.*;
 import java.util.Date;
 
 /**
@@ -15,8 +16,8 @@ import java.util.Date;
 public class Compra extends Solicitud {
     private Supervisor idSupervisor;
 
-    public Compra(int id, Date fecha, String estado, int idVehiculo, Supervisor idSupervisor) {
-        super(id, fecha, estado, idVehiculo);
+    public Compra(Cliente cliente, Date fecha, Vehiculo vehiculo, Supervisor idSupervisor) {
+        super(cliente, fecha, vehiculo);
         this.idSupervisor= idSupervisor;
     }
     

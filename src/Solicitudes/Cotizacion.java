@@ -5,7 +5,8 @@
  */
 package Solicitudes;
 
-import Usuarios.Vendedor;
+import Usuarios.*;
+import Vehiculos.*;
 import java.util.Date;
 
 /**
@@ -15,8 +16,8 @@ import java.util.Date;
 public class Cotizacion extends Solicitud {
     private Vendedor idVendedor;
 
-    public Cotizacion(int id, Date fecha, String estado, int idVehiculo, Vendedor idVendedor) {
-        super(id, fecha, estado, idVehiculo);
+    public Cotizacion(Cliente cliente, Date fecha, Vehiculo vehiculo, Vendedor idVendedor) {
+        super(cliente, fecha, vehiculo);
         this.idVendedor= idVendedor;
     }
 

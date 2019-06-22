@@ -9,6 +9,6 @@ package Vehiculos;
  *
  * @author kexbl
  */
-public class Tractor {
+public class Tractor extends Vehiculo {
     
 }

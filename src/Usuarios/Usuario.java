@@ -9,7 +9,7 @@ package Usuarios;
  *
  * @author Kevin Blum
  */
-public class Usuario {
+abstract class Usuario {
     private String dni;
     private String nombre;
     private String usuario;
