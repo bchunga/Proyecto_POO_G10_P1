@@ -5,10 +5,20 @@
  */
 package Vehiculos;
 
+import java.util.Date;
+
 /**
  *
  * @author kexbl
  */
 public class Tractor extends Vehiculo {
+    protected Boolean agricola;
+    protected String transmision;
+
+    public Tractor(Boolean agricola, String transmision, Double precio, String marca, String modelo, Date fabricacion, String combustible, int numLlnatas) {
+        super(precio, marca, modelo, fabricacion, combustible, numLlnatas);
+        this.agricola = agricola;
+        this.transmision = transmision;
+    }
     
 }

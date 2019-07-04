@@ -5,10 +5,18 @@
  */
 package Vehiculos;
 
+import java.util.Date;
+
 /**
  *
  * @author kexbl
  */
 public class Motocicleta extends Vehiculo {
+    protected String categoria;
+
+    public Motocicleta(String categoria, Double precio, String marca, String modelo, Date fabricacion, String combustible, int numLlnatas) {
+        super(precio, marca, modelo, fabricacion, combustible, numLlnatas);
+        this.categoria = categoria;
+    }
     
 }
