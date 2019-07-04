@@ -12,18 +12,16 @@ import java.util.ArrayList;
  * @author Kevin Blum
  */
 public class Vendedor extends Usuario{
-    private int id;
     private ArrayList solicitudesCotizacion;
 
-    public Vendedor(int id, ArrayList solicitudesCotizacion, String dni, String nombre, String usuario) {
+    public Vendedor( ArrayList solicitudesCotizacion, String dni, String nombre, String usuario) {
         super(dni, nombre, usuario);
-        this.id = id;
         this.solicitudesCotizacion = solicitudesCotizacion;
     }
 
     @Override
     public String toString() {
-        return "Vendedor{" + "id=" + id + ", solicitudesCotizacion=" + solicitudesCotizacion + '}';
+        return "Vendedor{" + "solicitudesCotizacion=" + solicitudesCotizacion + '}';
     }
     
     

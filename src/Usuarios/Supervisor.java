@@ -13,20 +13,18 @@ import Usuarios.*;
  * @author Kevin Blum
  */
 public class Supervisor extends Usuario {
-    private int id;
     private ArrayList solicitudesCompra;
     private ArrayList cerfificadosAcademicos;
 
-    public Supervisor(int id, ArrayList solicitudesCompra, ArrayList cerfificadosAcademicos, String dni, String nombre, String usuario) {
+    public Supervisor(ArrayList solicitudesCompra, ArrayList cerfificadosAcademicos, String dni, String nombre, String usuario) {
         super(dni, nombre, usuario);
-        this.id = id;
         this.solicitudesCompra = solicitudesCompra;
         this.cerfificadosAcademicos = cerfificadosAcademicos;
     }
 
     @Override
     public String toString() {
-        return "Supervisor{" + "id=" + id + ", solicitudesCompra=" + solicitudesCompra + ", cerfificadosAcademicos=" + cerfificadosAcademicos + '}';
+        return "Supervisor{" + ", solicitudesCompra=" + solicitudesCompra + ", cerfificadosAcademicos=" + cerfificadosAcademicos + '}';
     }
     
     public void aprobarCompra(Compra compra){

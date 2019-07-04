@@ -14,13 +14,18 @@ abstract class Usuario {
     private String nombre;
     private String usuario;
     private String contraseña;
-
+    
+    //Constructor
     public Usuario(String dni, String nombre, String usuario) {
         this.dni = dni;
         this.nombre = nombre;
         this.usuario = usuario;
     }
-
+    
+    public void leerUsuarios(){
+        
+    }
+    
     public String getDni() {
         return dni;
     }

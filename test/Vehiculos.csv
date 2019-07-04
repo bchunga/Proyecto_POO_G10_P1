@@ -1,0 +1,8 @@
+Auto;Chevrolet;Sail;2019;Gasolina;4;18000;5;No;No;null
+Auto;Toyota;Corolla;2018;Gasolina;4;25000;5;No;Si;null
+Camion;Chevrolet;FVR;2019;Diesel;6;45000;2000;3;null;
+Camion;Isuzu;NLR;2019;Gasolina;8;38000;2500;4;null;
+Tractor;John Deere;Montana;2018;Diesel;4;35000;Si;Mecanica;null;
+Tractor;Valtra;N174;2019;Diesel;4;48000;No;Hidraulica;null;
+Motocicleta;Suzuki;R750;2019;Gasolina;2;11000;Deportiva;null;;
+Motocicleta;Yamaha;R15;2018;Gasolina;2;8500;Todoterreno;null;;

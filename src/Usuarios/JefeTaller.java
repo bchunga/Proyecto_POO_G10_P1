@@ -17,15 +17,13 @@ public class JefeTaller extends Usuario{
     
     Scanner scanner = new Scanner(System.in);
     
-    private int id;
     private ArrayList certificadosTecnicos;
     private ArrayList solicitudesMant;
     private ArrayList vMant;
     private ArrayList vPorEntregar;
 
-    public JefeTaller(int id, ArrayList certificadosTecnicos, ArrayList solicitudesMant, ArrayList vMant, ArrayList vPorEntregar, String dni, String nombre, String usuario) {
+    public JefeTaller(ArrayList certificadosTecnicos, ArrayList solicitudesMant, ArrayList vMant, ArrayList vPorEntregar, String dni, String nombre, String usuario) {
         super(dni, nombre, usuario);
-        this.id = id;
         this.certificadosTecnicos = certificadosTecnicos;
         this.solicitudesMant = solicitudesMant;
         this.vMant = vMant;
