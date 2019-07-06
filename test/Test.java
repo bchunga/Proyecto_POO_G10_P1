@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
 import java.util.Arrays;
 import com.opencsv.CSVReader;
@@ -11,19 +11,36 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.File;
+import java.lang.NullPointerException;
+import java.nio.*;
+import java.nio.file.*;
+import Usuarios.*;
 /**
  *
  * @author BRYAN
  */
 public class Test {
     public static void main(String Args[]) throws FileNotFoundException{
-        CSVReader archivo = new CSVReader(new FileReader ("usuarios.csv"));
-        List<String[]> datos = new ArrayList();
-        try{
-            datos = archivo.readAll();
-        }
-        catch(IOException e){
-            System.out.println("Archivo no encontrado");
+        String csvFile = "test/usuarios.csv";
+        String line = "";
+        String cvsSplitBy = ";";
+
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+
+            while ((line = br.readLine()) != null) {
+
+                // use comma as separator
+                String[] data = line.split(cvsSplitBy);
+                System.out.println(line);
+                //System.out.println(data[0].equals("Cliente"));
+                if (data[0].equals("Cliente")){
+                    //Usuario.usuarios.add(data);
+                }
+
+            }
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

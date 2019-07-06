@@ -16,8 +16,8 @@ public class Supervisor extends Usuario {
     private ArrayList solicitudesCompra;
     private ArrayList cerfificadosAcademicos;
 
-    public Supervisor(ArrayList solicitudesCompra, ArrayList cerfificadosAcademicos, String dni, String nombre, String usuario) {
-        super(dni, nombre, usuario);
+    public Supervisor(ArrayList solicitudesCompra, ArrayList cerfificadosAcademicos, String dni, String nombre, String usuario, String pw) {
+        super(dni, nombre, usuario, pw);
         this.solicitudesCompra = solicitudesCompra;
         this.cerfificadosAcademicos = cerfificadosAcademicos;
     }

@@ -16,9 +16,11 @@ public class Cliente extends Usuario {
     private String ingresosMensuales;
     private ArrayList solicitudesPendientes;
     private ArrayList solicitudesRespondidas;
+    
+    ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 
-    public Cliente(String ocupacion, String ingresosMensuales, ArrayList solicitudesPendientes, ArrayList solicitudesRespondidas, String dni, String nombre, String usuario) {
-        super(dni, nombre, usuario);
+    public Cliente(String ocupacion, String ingresosMensuales, ArrayList solicitudesPendientes, ArrayList solicitudesRespondidas, String dni, String nombre, String usuario, String pw) {
+        super(dni, nombre, usuario, pw);
         this.ocupacion = ocupacion;
         this.ingresosMensuales = ingresosMensuales;
         this.solicitudesPendientes = solicitudesPendientes;

@@ -14,8 +14,8 @@ import java.util.ArrayList;
 public class Vendedor extends Usuario{
     private ArrayList solicitudesCotizacion;
 
-    public Vendedor( ArrayList solicitudesCotizacion, String dni, String nombre, String usuario) {
-        super(dni, nombre, usuario);
+    public Vendedor( ArrayList solicitudesCotizacion, String dni, String nombre, String usuario, String pw) {
+        super(dni, nombre, usuario, pw);
         this.solicitudesCotizacion = solicitudesCotizacion;
     }
 

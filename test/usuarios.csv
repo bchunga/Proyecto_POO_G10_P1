@@ -4,4 +4,4 @@ Vendedor;3456789012;Dayanna Alvarez;dalvarez;12345;null;;;
 Vendedor;4567890123;Hector Cubi;hcubi;12345;null;;;
 Supervisor;5678901234;Gabriela Vargas;gvargas;12345;CA1;null;;
 Supervisor;6789012345;Jacobo Giler;jgiler;12345;CA2;null;;
-JefeTaller;7890123456;Fausto Ruiz;fruiz;12345;"CT1;CT2";null;null;null
+JefeTaller;7890123456;Fausto Ruiz;fruiz;12345;"CT1,CT2";null;null;null
