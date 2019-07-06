@@ -14,7 +14,7 @@ import java.util.Date;
 public class Motocicleta extends Vehiculo {
     protected String categoria;
 
-    public Motocicleta(String categoria, Double precio, String marca, String modelo, Date fabricacion, String combustible, int numLlnatas) {
+    public Motocicleta(String categoria, Double precio, String marca, String modelo, String fabricacion, String combustible, char numLlnatas) {
         super(precio, marca, modelo, fabricacion, combustible, numLlnatas);
         this.categoria = categoria;
     }

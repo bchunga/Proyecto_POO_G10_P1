@@ -33,10 +33,6 @@ public class Usuario {
         this.contraseña = pw;
     }
     
-    public void leerUsuarios(){
-        
-    }
-    
     public String getDni() {
         return dni;
     }
@@ -74,7 +70,7 @@ public class Usuario {
         return "Usuario{" + "dni=" + dni + ", nombre=" + nombre + ", usuario=" + usuario + ", contrase\u00f1a=" + contraseña + '}';
     }
     
-    public void generarUsuarios(){
+    public void leerUsuarios(){
         String csvFile = "src/Usuraios/usuarios.csv";
         String line = "";
         String cvsSplitBy = ";";
@@ -85,8 +81,7 @@ public class Usuario {
 
                 // use comma as separator
                 String[] data = line.split(cvsSplitBy);
-                    
-                System.out.println(line);
+                
                 if (data[0].equals("Cliente")){
                     clientes.add(new Cliente(data[5], data[6], new ArrayList<>(), new ArrayList<>(), data[1], data[2], data[3] , data[4]));  
                 }
