@@ -23,10 +23,10 @@ public class Vehiculo {
     protected char numLlnatas;
     protected Double precio;
     
-    ArrayList<Auto> autos = new ArrayList<Auto>();
-    ArrayList<Camion> camiones = new ArrayList<Camion>();
-    ArrayList<Motocicleta> motos = new ArrayList<Motocicleta>();
-    ArrayList<Tractor> tractores = new ArrayList<Tractor>();
+    public static ArrayList<Auto> autos = new ArrayList<Auto>();
+    public static ArrayList<Camion> camiones = new ArrayList<Camion>();
+    public static ArrayList<Motocicleta> motos = new ArrayList<Motocicleta>();
+    public static ArrayList<Tractor> tractores = new ArrayList<Tractor>();
     
     public Vehiculo(Double precio, String marca, String modelo, String fabricacion, String combustible, char numLlnatas) {
         this.marca = marca;
@@ -70,7 +70,7 @@ public class Vehiculo {
                     autos.add(new Auto(data[7].charAt(0), conv, camRetro, Double.parseDouble(data[6]), data[1], data[2], data[3], data[4], data[5].charAt(0)));
                     
                 } else if (data[0].equals("Camion")) {
-                    camiones.add(new Camion(data[7].charAt(0), data[8].charAt(0), Double.parseDouble(data[6]), data[1], data[2], data[3], data[4], data[5].charAt(0)));
+                    camiones.add(new Camion(Double.parseDouble(data[7]), data[8].charAt(0), Double.parseDouble(data[6]), data[1], data[2], data[3], data[4], data[5].charAt(0)));
                 } else if (data[0].equals("Tractor")){
                     boolean agri;
                     

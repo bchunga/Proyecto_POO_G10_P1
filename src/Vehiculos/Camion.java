@@ -12,10 +12,10 @@ import java.util.Date;
  * @author kexbl
  */
 public class Camion extends Vehiculo {
-    protected char capCarga;
+    protected double capCarga;
     protected char numEjes;
 
-    public Camion(char capCarga, char numEjes, Double precio, String marca, String modelo, String fabricacion, String combustible, char numLlnatas) {
+    public Camion(double capCarga, char numEjes, Double precio, String marca, String modelo, String fabricacion, String combustible, char numLlnatas) {
         super(precio, marca, modelo, fabricacion, combustible, numLlnatas);
         this.capCarga = capCarga;
         this.numEjes = numEjes;
