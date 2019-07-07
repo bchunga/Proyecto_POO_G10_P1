@@ -16,9 +16,10 @@ import java.util.Date;
 public class Compra extends Solicitud {
     private Supervisor idSupervisor;
 
-    public Compra(Cliente cliente, Date fecha, Vehiculo vehiculo, Supervisor idSupervisor) {
+
+     public Compra(Supervisor idSupervisor, Cliente cliente, Date fecha, Vehiculo vehiculo) {
         super(cliente, fecha, vehiculo);
-        this.idSupervisor= idSupervisor;
+        this.idSupervisor = idSupervisor;
     }
-    
+
 }

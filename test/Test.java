@@ -3,19 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import java.util.*;
-import java.util.List;
-import java.util.Arrays;
-import com.opencsv.CSVReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.File;
-import java.lang.NullPointerException;
-import java.nio.*;
-import java.nio.file.*;
-import Usuarios.*;
 /**
  *
  * @author BRYAN

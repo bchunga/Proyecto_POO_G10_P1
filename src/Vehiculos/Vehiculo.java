@@ -16,13 +16,100 @@ import java.util.Arrays;
  * @author kexbl
  */
 public class Vehiculo {
-    protected String marca;
-    protected String modelo;
-    protected String fabricacion;
-    protected String combustible;
-    protected char numLlnatas;
-    protected Double precio;
+
+    /**
+     * @return the marca
+     */
+    public String getMarca() {
+        return marca;
+    }
+
+    /**
+     * @param marca the marca to set
+     */
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    /**
+     * @return the modelo
+     */
+    public String getModelo() {
+        return modelo;
+    }
+
+    /**
+     * @param modelo the modelo to set
+     */
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    /**
+     * @return the fabricacion
+     */
+    public String getFabricacion() {
+        return fabricacion;
+    }
+
+    /**
+     * @param fabricacion the fabricacion to set
+     */
+    public void setFabricacion(String fabricacion) {
+        this.fabricacion = fabricacion;
+    }
+
+    /**
+     * @return the combustible
+     */
+    public String getCombustible() {
+        return combustible;
+    }
+
+    /**
+     * @param combustible the combustible to set
+     */
+    public void setCombustible(String combustible) {
+        this.combustible = combustible;
+    }
+
+    /**
+     * @return the numLlnatas
+     */
+    public char getNumLlnatas() {
+        return numLlnatas;
+    }
+
+    /**
+     * @param numLlnatas the numLlnatas to set
+     */
+    public void setNumLlnatas(char numLlnatas) {
+        this.numLlnatas = numLlnatas;
+    }
+
+    /**
+     * @return the precio
+     */
+    public Double getPrecio() {
+        return precio;
+    }
+
+    /**
+     * @param precio the precio to set
+     */
+    public void setPrecio(Double precio) {
+        this.precio = precio;
+    }
     
+    private int idVehiculo;
+    private String marca;
+    private String modelo;
+    private String fabricacion;
+    private String combustible;
+    private char numLlnatas;
+    private Double precio;
+    private String estado;
+
     public static ArrayList<Auto> autos = new ArrayList<Auto>();
     public static ArrayList<Camion> camiones = new ArrayList<Camion>();
     public static ArrayList<Motocicleta> motos = new ArrayList<Motocicleta>();
@@ -94,7 +181,29 @@ public class Vehiculo {
     
     //Extra mostrar los datos para la funcion extra de supervisor
     public String datosMant(){
-        return "Marca: " + marca + " Modelo: " + modelo + "Fabricacion: " + fabricacion + "Combustible: "  + combustible;
+        return "Marca: " + getMarca() + " Modelo: " + getModelo() + "Fabricacion: " + getFabricacion() + "Combustible: "  + getCombustible();
     }
     
+        public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    /**
+     * @return the idVehiculo
+     */
+    public int getIdVehiculo() {
+        return idVehiculo;
+    }
+
+    /**
+     * @param idVehiculo the idVehiculo to set
+     */
+    public void setIdVehiculo(int idVehiculo) {
+        this.idVehiculo = idVehiculo;
+    }
+
 }

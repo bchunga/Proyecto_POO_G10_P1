@@ -7,22 +7,26 @@ package Solicitudes;
 import Usuarios.*;
 import Vehiculos.*;
 import java.util.Date;
+import java.util.Random;
 
 /**
  *
  * @author Kevin Blum
  */
 abstract class Solicitud {
+      private int idSolicitud;
     private Cliente cliente;
     private Date fecha;
     private String estado;
     private Vehiculo vehiculo;
     
-    public Solicitud(Cliente cliente, Date fecha, Vehiculo vehiculo) {
+    public Solicitud( Cliente cliente, Date fecha, Vehiculo vehiculo) {
+        this.idSolicitud= generarId();
         this.cliente = cliente;
         this.fecha = fecha;
         this.estado = "Pendiente";
         this.vehiculo = vehiculo;
+        
     }
 
     public Cliente getCliente() {
@@ -53,6 +57,22 @@ abstract class Solicitud {
         return vehiculo;
     }
 
+    public int getIdSolicitud() {
+        
+        return idSolicitud;
+    }
+    
+    public int generarId(){
+        Random r = new Random();
+        int id= r.nextInt(99999);
+        
+        return id;
+    
+    }
+
+    public void setIdSolicitud(int idSolicitud) {
+        this.idSolicitud = idSolicitud;
+    }
     
     
 }

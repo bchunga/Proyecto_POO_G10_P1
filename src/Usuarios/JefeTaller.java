@@ -151,5 +151,12 @@ public class JefeTaller extends Usuario{
         
         repuestosUsados.add(aux);
     }
-    
+      public ArrayList<Mantenimiento> getSolicitudesMant() {
+        return solicitudesMant;
+    }
+
+    public void setSolicitudesCompra(ArrayList<Mantenimiento> solicitudesMant) {
+        this.solicitudesMant = solicitudesMant;
+    }
+  
 }

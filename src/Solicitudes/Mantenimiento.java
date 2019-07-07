@@ -13,7 +13,7 @@ import java.util.Date;
  * @author Kevin Blum
  */
 public class Mantenimiento extends Solicitud{
-    private float kilometrajeVeh;
+ private float kilometrajeVeh;
     private String estadoM;
     private float costoMant;
 
@@ -23,5 +23,8 @@ public class Mantenimiento extends Solicitud{
         this.costoMant = costoMant;
     }
 
+    public Mantenimiento(Cliente cliente, Date fecha, Vehiculo vehiculo) {
+        super(cliente, fecha, vehiculo);
+}
 
 }

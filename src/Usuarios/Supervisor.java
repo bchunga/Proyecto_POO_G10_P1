@@ -28,7 +28,7 @@ public class Supervisor extends Usuario {
 
     @Override
     public String toString() {
-        return "Supervisor{" + ", solicitudesCompra=" + solicitudesCompra + ", cerfificadosAcademicos=" + cerfificadosAcademicos + '}';
+        return "Supervisor{" + ", solicitudesCompra=" + getSolicitudesCompra() + ", cerfificadosAcademicos=" + cerfificadosAcademicos + '}';
     }
     
     //Aprueba la solicitud de compra del cliente
@@ -607,6 +607,20 @@ public class Supervisor extends Usuario {
             }
             
         }
+    }
+
+    /**
+     * @return the solicitudesCompra
+     */
+    public ArrayList getSolicitudesCompra() {
+        return solicitudesCompra;
+    }
+
+    /**
+     * @param solicitudesCompra the solicitudesCompra to set
+     */
+    public void setSolicitudesCompra(ArrayList solicitudesCompra) {
+        this.solicitudesCompra = solicitudesCompra;
     }
     
 }
