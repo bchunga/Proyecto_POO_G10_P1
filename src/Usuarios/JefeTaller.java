@@ -19,8 +19,9 @@ public class JefeTaller extends Usuario{
     
     private ArrayList certificadosTecnicos;
     private ArrayList solicitudesMant;
-    private ArrayList vMant;
-    private ArrayList vPorEntregar;
+    public static ArrayList<Vehiculo> vMant;
+    private ArrayList<Vehiculo> vPorEntregar;
+    public ArrayList<ArrayList> repuestosUsados;
 
     public JefeTaller(ArrayList certificadosTecnicos, ArrayList solicitudesMant, ArrayList vMant, ArrayList vPorEntregar, String dni, String nombre, String usuario, String pw) {
         super(dni, nombre, usuario, pw);
@@ -103,4 +104,46 @@ public class JefeTaller extends Usuario{
         this.solicitudesMant.remove(mant);
         this.vPorEntregar.remove(vehiculo);
     }
+    
+    public void agregarRepuesto(){
+        ArrayList aux = new ArrayList();
+        int i = 1;
+        for (Vehiculo veh: JefeTaller.vMant){
+            System.out.println(i + ", " + veh.datosMant());
+            i = i + 1;
+        }
+        boolean ctrl = false;
+        int opVeh = 0;
+        while (!ctrl){
+            System.out.print("Vehiculo: ");
+            try{
+                opVeh = scanner.nextInt();
+            } catch (Exception e) {
+                System.out.println("Opcion no valida.");
+            }
+        }
+        aux.add(vMant.get(opVeh));
+        System.out.print("Codigo de repuesto: ");
+        String codigo = scanner.nextLine();
+        aux.add(codigo);
+        ctrl = false;
+        double precio = 0;
+        while (!ctrl){
+           System.out.print("Precio");
+           try {
+             precio = scanner.nextDouble(); 
+             ctrl = true;
+           } catch (Exception e) {
+               System.out.println("Dato no valido");
+               ctrl = false;
+           }
+        }
+        aux.add(precio);
+        System.out.print("Descripcion: ");
+        String desc = scanner.nextLine();
+        aux.add(desc);
+        
+        repuestosUsados.add(aux);
+    }
+    
 }

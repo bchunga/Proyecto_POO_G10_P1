@@ -91,4 +91,8 @@ public class Vehiculo {
         }
     }
     
+    public String datosMant(){
+        return "Marca: " + marca + " Modelo: " + modelo + "Fabricacion: " + fabricacion + "Combustible: "  + combustible;
+    }
+    
 }

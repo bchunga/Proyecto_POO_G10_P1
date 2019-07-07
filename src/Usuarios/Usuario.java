@@ -5,12 +5,14 @@
  */
 package Usuarios;
 
+import Vehiculos.Vehiculo;
+import Solicitudes.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-
+import java.util.Scanner;
 /**
  *
  * @author Kevin Blum
@@ -20,6 +22,8 @@ public class Usuario {
     private String nombre;
     private String usuario;
     private String contraseña;
+    
+    Scanner scanner = new Scanner(System.in);
     
     ArrayList<Cliente> clientes = new ArrayList<Cliente>();
     ArrayList<Vendedor> vendedores = new ArrayList<Vendedor>();
@@ -105,4 +109,6 @@ public class Usuario {
         }
     }
     
- }
+    
+    
+}

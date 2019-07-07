@@ -550,4 +550,12 @@ public class Supervisor extends Usuario {
         
     }
     
+    public void vehiculosMantenimiento(){
+        int i = 1;
+        for (Vehiculo veh: JefeTaller.vMant){
+            System.out.println(i + ", " + veh.datosMant());
+            i = i + 1;
+        }
+    }
+    
 }
