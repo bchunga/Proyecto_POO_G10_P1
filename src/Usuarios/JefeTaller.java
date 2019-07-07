@@ -31,6 +31,7 @@ public class JefeTaller extends Usuario{
         this.vPorEntregar = vPorEntregar;
     }
     
+    //Aprovar solicitud de mantenimiento del vehiculo
     public void aceptarMant(Mantenimiento mant){
         mant.setEstado("Adminito");
         Cliente cliente=mant.getCliente();
@@ -44,6 +45,7 @@ public class JefeTaller extends Usuario{
         cliente.setSolicitudesRespondidas(solCliente);
     }
     
+    //Rechazar solicitud de mantenimiento del vehiculo
     public void rechazarMant(Mantenimiento mant, String motivo){
         mant.setEstado("Rechazado: "+motivo );
         Cliente cliente=mant.getCliente();
@@ -57,6 +59,7 @@ public class JefeTaller extends Usuario{
         cliente.setSolicitudesRespondidas(solCliente);
     }
     
+    //Actualizar estado del vehiculo
     public void estadoVehiculo(Mantenimiento mant){
         Vehiculo vehiculo = mant.getVehiculo();
         Cliente cliente = mant.getCliente();
@@ -99,12 +102,14 @@ public class JefeTaller extends Usuario{
         }
     } 
     
+    //Entrega del vehiculo
     public void entregarVehiculo(Mantenimiento mant, Vehiculo vehiculo){
         mant.setEstado("Entregado");
         this.solicitudesMant.remove(mant);
         this.vPorEntregar.remove(vehiculo);
     }
     
+    //Extra permite registrar repuestos usados
     public void agregarRepuesto(){
         ArrayList aux = new ArrayList();
         int i = 1;
@@ -118,6 +123,7 @@ public class JefeTaller extends Usuario{
             System.out.print("Vehiculo: ");
             try{
                 opVeh = scanner.nextInt();
+                opVeh = opVeh - 1;
             } catch (Exception e) {
                 System.out.println("Opcion no valida.");
             }

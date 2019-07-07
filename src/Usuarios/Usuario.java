@@ -25,9 +25,9 @@ public class Usuario {
     
     Scanner scanner = new Scanner(System.in);
     
-    ArrayList<Cliente> clientes = new ArrayList<Cliente>();
-    ArrayList<Vendedor> vendedores = new ArrayList<Vendedor>();
-    ArrayList<Supervisor> supervisores = new ArrayList<Supervisor>();
+    public static ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+    public static ArrayList<Vendedor> vendedores = new ArrayList<Vendedor>();
+    public static ArrayList<Supervisor> supervisores = new ArrayList<Supervisor>();
     
     //Constructor
     public Usuario(String dni, String nombre, String usuario, String pw) {
@@ -74,6 +74,7 @@ public class Usuario {
         return "Usuario{" + "dni=" + dni + ", nombre=" + nombre + ", usuario=" + usuario + ", contrase\u00f1a=" + contraseña + '}';
     }
     
+    //Leer los usuarios del csv
     public void leerUsuarios(){
         String csvFile = "src/Usuraios/usuarios.csv";
         String line = "";

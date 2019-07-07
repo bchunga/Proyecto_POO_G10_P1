@@ -37,6 +37,7 @@ public class Vehiculo {
         this.precio = precio;
     }
     
+    //leer los vehiculo en el csv
     public void leerVehiculos(){
         String csvFile = "src/Usuraios/vehiculos.csv";
         String line = "";
@@ -91,6 +92,7 @@ public class Vehiculo {
         }
     }
     
+    //Extra mostrar los datos para la funcion extra de supervisor
     public String datosMant(){
         return "Marca: " + marca + " Modelo: " + modelo + "Fabricacion: " + fabricacion + "Combustible: "  + combustible;
     }

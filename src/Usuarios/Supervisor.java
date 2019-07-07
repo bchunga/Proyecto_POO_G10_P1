@@ -31,6 +31,7 @@ public class Supervisor extends Usuario {
         return "Supervisor{" + ", solicitudesCompra=" + solicitudesCompra + ", cerfificadosAcademicos=" + cerfificadosAcademicos + '}';
     }
     
+    //Aprueba la solicitud de compra del cliente
     public void aprobarCompra(Compra compra){
         compra.setEstado("Aprobada");
         Cliente cliente=compra.getCliente();
@@ -44,6 +45,7 @@ public class Supervisor extends Usuario {
         cliente.setSolicitudesRespondidas(solCliente);
     }
     
+    //Rechazar solicitud de compra del cliente
     public void rechazarCompra(Compra compra, String motivo){
         compra.setEstado("Rechazada: "+motivo );
         Cliente cliente=compra.getCliente();
@@ -58,7 +60,7 @@ public class Supervisor extends Usuario {
     }
     
     
-    //Opcional: Registro de un nuevo vehiculo al stock
+    //Extra: Registro de un nuevo vehiculo al stock
     public void nuevoVehiculo(){
         boolean ctrl = false;
         int op=0;
@@ -550,11 +552,60 @@ public class Supervisor extends Usuario {
         
     }
     
+    //Extra permite ver los vehiculos en mantenimiento
     public void vehiculosMantenimiento(){
         int i = 1;
         for (Vehiculo veh: JefeTaller.vMant){
             System.out.println(i + ", " + veh.datosMant());
             i = i + 1;
+        }
+    }
+    
+    //Extra modifica datos del empleado
+    public void modificarEmpleado(){
+        boolean ctrl = false;
+        int i = 1;
+        while (!ctrl) {
+            for (Vendedor vend: Usuario.vendedores){
+                System.out.println(1 + ".- " + vend.getNombre());
+            }
+            int opVend = 0;
+            try{
+                opVend = scanner.nextInt();
+                Vendedor vendedor = Usuario.vendedores.get(opVend - 1);
+                System.out.println("Modificar: ");
+                System.out.println("1.-Nombre");
+                System.out.println("2.-Usuario");
+                System.out.println("3.-Contraseña");
+                int opDato = scanner.nextInt();
+                switch (opDato){
+                    case 1:
+                        System.out.print("Nombre y Apellido: ");
+                        String nom = scanner.nextLine();
+                        vendedor.setNombre(nom);
+                        ctrl = true;
+                        break;
+                    case 2:
+                        System.out.println("Usuario nuevo: ");
+                        String usu = scanner.nextLine();
+                        vendedor.setUsuario(usu);
+                        ctrl = true;
+                        break;
+                    case 3:
+                        System.out.println("Contraseña nueva: ");
+                        String pass = scanner.nextLine();
+                        vendedor.setContraseña(pass);
+                        ctrl = true;
+                        break;
+                    default:
+                        System.out.println("Opcion no valida.");
+                        ctrl = false;
+                }
+            } catch (Exception e) {
+                System.out.println("Opcion no valida.");
+                ctrl = false;
+            }
+            
         }
     }
     
