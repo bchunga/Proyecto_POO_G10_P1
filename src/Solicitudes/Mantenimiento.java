@@ -25,6 +25,11 @@ public class Mantenimiento extends Solicitud{
 
     public Mantenimiento(Cliente cliente, Date fecha, Vehiculo vehiculo) {
         super(cliente, fecha, vehiculo);
-}
-
+    }
+    
+    
+    public String toString(){
+        return cliente.getNombre() + ", " + vehiculo.datosMant() + ", " + motivo;
+    }
+    
 }

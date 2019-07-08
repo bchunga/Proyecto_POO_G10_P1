@@ -15,11 +15,11 @@ import java.util.Random;
  */
 abstract class Solicitud {
     private int idSolicitud;
-    private Cliente cliente;
+    public Cliente cliente;
     private Date fecha;
     private String estado;
-    private Vehiculo vehiculo;
-    private String motivo;
+    public Vehiculo vehiculo;
+    public String motivo;
     
     public Solicitud( Cliente cliente, Date fecha, Vehiculo vehiculo) {
         this.idSolicitud= generarId();

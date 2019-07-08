@@ -21,7 +21,7 @@ public class JefeTaller extends Usuario{
     Scanner scanner = new Scanner(System.in);
     
     private ArrayList certificadosTecnicos;
-    private ArrayList solicitudesMant;
+    public static ArrayList<Mantenimiento> solicitudesMant;
     public static ArrayList<Vehiculo> vMant;
     public static ArrayList<Vehiculo> vPorEntregar;
     public static ArrayList<ArrayList> repuestosUsados;
@@ -46,6 +46,8 @@ public class JefeTaller extends Usuario{
         ArrayList solCliente=cliente.getSolicitudesRespondidas();
         solCliente.add(mant);
         cliente.setSolicitudesRespondidas(solCliente);
+        
+        vMant.add(mant.vehiculo);
     }
     
     //Rechazar solicitud de mantenimiento del vehiculo
@@ -267,8 +269,41 @@ public class JefeTaller extends Usuario{
     }
     
     public void menuJefeTaller() {
-        
         int opc = 0;
+        boolean ctrl = false;
+        for (Mantenimiento mant: solicitudesMant){
+            while (!ctrl) {
+                try{
+                    System.out.println(mant.toString());
+                    System.out.println("1.- Aprobar Solicitud");
+                    System.out.println("2.- Rechazar Solicitud");
+                    System.out.println("8.- Salir");
+                    opc = scanner.nextInt();
+                    switch (opc) {
+                        case 1:
+                            aceptarMant(mant);
+                            ctrl = true;
+                            break;
+                        case 2:
+                            System.out.print("Motivo rechazo: ");
+                            String motivo = scanner.nextLine();
+                            rechazarMant(mant, motivo);
+                            ctrl = true;
+                            break;
+                        case 3:
+                            ctrl = true;
+                            break;
+                        default:
+                            System.out.println("Opcion no valida.");
+                            ctrl = false;
+                    }
+                } catch (Exception e) {
+                    System.out.println("Opcion no valida.");
+                } 
+            }
+        }
+        
+        opc = 0;
       
         do {
             
