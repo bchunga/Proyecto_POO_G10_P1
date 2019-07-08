@@ -23,8 +23,8 @@ public class JefeTaller extends Usuario{
     private ArrayList certificadosTecnicos;
     private ArrayList solicitudesMant;
     public static ArrayList<Vehiculo> vMant;
-    private ArrayList<Vehiculo> vPorEntregar;
-    public ArrayList<ArrayList> repuestosUsados;
+    public static ArrayList<Vehiculo> vPorEntregar;
+    public static ArrayList<ArrayList> repuestosUsados;
 
     public JefeTaller(ArrayList certificadosTecnicos, ArrayList solicitudesMant, ArrayList vMant, ArrayList vPorEntregar, String dni, String nombre, String usuario, String pw) {
         super(dni, nombre, usuario, pw, RolUsuario.JefeTaller);
@@ -162,6 +162,7 @@ public class JefeTaller extends Usuario{
         this.solicitudesMant = solicitudesMant;
     }
     
+    //agregar vehiculos en mantenimiento
     public static void leerVehiculosMantenimiento(ArrayList<Vehiculo> vehiculos){
         String csvFile = "src/Usuarios/VehMantenimiento.csv";
         String line = "";
@@ -215,4 +216,57 @@ public class JefeTaller extends Usuario{
         }
     }
     
+    //agregar vehiculos por entregar
+    public static void leerVehiculosPorEntregar(ArrayList<Vehiculo> vehiculos){
+        String csvFile = "src/Usuarios/PorEntregar.csv";
+        String line = "";
+        String cvsSplitBy = ";";
+
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+
+            while ((line = br.readLine()) != null) {
+
+                // use comma as separator
+                String[] data = line.split(cvsSplitBy);
+                    
+                
+                if (data[0].equals("Auto")){
+                    boolean conv ;
+                    boolean camRetro;
+                    
+                    if (data[8].equals("Si")){
+                        conv = true;
+                    } else {
+                        conv = false;
+                    }
+                    
+                    if (data[9].equals("Si")){
+                        camRetro = true;
+                    } else {
+                        camRetro = false;
+                    }
+                    
+                    vPorEntregar.add(new Auto(data[7].charAt(0), conv, camRetro, Double.parseDouble(data[6]), data[1], data[2], data[3], data[4], data[5].charAt(0)));
+                    
+                } else if (data[0].equals("Camion")) {
+                    vPorEntregar.add(new Camion(Double.parseDouble(data[7]), data[8].charAt(0), Double.parseDouble(data[6]), data[1], data[2], data[3], data[4], data[5].charAt(0)));
+                } else if (data[0].equals("Tractor")){
+                    boolean agri;
+                    
+                    if (data[7].equals("Si")){
+                        agri = true;
+                    } else {
+                        agri = false;
+                    }
+                    
+                    vPorEntregar.add(new Tractor(agri, data[8], Double.parseDouble(data[6]),data[1], data[2], data[3], data[4], data[5].charAt(0)));
+                }else if (data[0].equals("Motocicleta")){
+                    vPorEntregar.add(new Motocicleta(data[7], Double.parseDouble(data[6]), data[1], data[2], data[3], data[4], data[5].charAt(0)));
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
