@@ -35,7 +35,7 @@ public class JefeTaller extends Usuario{
     }
     
     //Aprovar solicitud de mantenimiento del vehiculo
-    public void aceptarMant(Mantenimiento mant){
+    public static void aceptarMant(Mantenimiento mant){
         mant.setEstado("Adminito");
         Cliente cliente=mant.getCliente();
         
@@ -49,7 +49,7 @@ public class JefeTaller extends Usuario{
     }
     
     //Rechazar solicitud de mantenimiento del vehiculo
-    public void rechazarMant(Mantenimiento mant, String motivo){
+    public static void rechazarMant(Mantenimiento mant, String motivo){
         mant.setEstado("Rechazado: "+motivo );
         Cliente cliente=mant.getCliente();
         
@@ -63,32 +63,30 @@ public class JefeTaller extends Usuario{
     }
     
     //Actualizar estado del vehiculo
-    public void estadoVehiculo(Mantenimiento mant){
-        Vehiculo vehiculo = mant.getVehiculo();
-        Cliente cliente = mant.getCliente();
+    public void estadoVehiculo(Vehiculo veh){
         Boolean ctrl=false;
         while (ctrl){
             try{
-                System.out.println("Seleccionar estado a actualizar de "+vehiculo+": ");
+                System.out.println("Seleccionar estado a actualizar: ");
                 System.out.println("1.-En reparacion");
                 System.out.println("2.-En etapa de prueba");
                 System.out.println("3.-Por etregar");
                 int op=scanner.nextInt();
                 switch (op){
                     case 1:
-                        mant.setEstado("En reparacion");
+                        veh.setEstado("En reparacion");
                         ctrl=true;
                         break;
 
                     case 2:
-                        mant.setEstado("En etapa de Prueba");
+                        veh.setEstado("En etapa de Prueba");
                         ctrl=true;
                         break;
 
                     case 3:
-                        mant.setEstado("Por entregar");
-                        this.vMant.remove(vehiculo);
-                        this.vPorEntregar.remove(vehiculo);
+                        veh.setEstado("Por entregar");
+                        this.vMant.remove(veh);
+                        this.vPorEntregar.remove(veh);
                         ctrl=true;
                         break;
 
@@ -106,9 +104,7 @@ public class JefeTaller extends Usuario{
     } 
     
     //Entrega del vehiculo
-    public void entregarVehiculo(Mantenimiento mant, Vehiculo vehiculo){
-        mant.setEstado("Entregado");
-        this.solicitudesMant.remove(mant);
+    public void entregarVehiculo(Vehiculo vehiculo){
         this.vPorEntregar.remove(vehiculo);
     }
     
@@ -269,4 +265,62 @@ public class JefeTaller extends Usuario{
             e.printStackTrace();
         }
     }
+    
+    public void menuJefeTaller() {
+        int opc = 0;
+      
+        do {
+            
+            System.out.println("---------------------------------------\n"
+                    + "\tMENU JEFE TALLER\n"
+                    + "---------------------------------------\n"
+                    + "Opciones:\n"
+                    + "1. Entregar Vehiculo\n"
+                    + "2. Administrar Vehiculos\n"
+                    + "3. Agregar Repuesto\n"
+                    + "8. Salir\n"
+                    + "Ingrese un número para seleccionar opción:");
+
+            Scanner sc = new Scanner(System.in);
+            opc = sc.nextInt();
+            int i;
+            int op = 0;
+            switch (opc) {
+                case 1:
+                    i = 1;
+                    for (Vehiculo veh: vMant){
+                        System.out.println(i + ".- " + veh.datosMant());
+                    }
+                     
+                    try {
+                        System.out.println("Seleccione Vehiculo: ");
+                        op = scanner.nextInt();
+                        op = op - 1;
+                        entregarVehiculo(vPorEntregar.get(op));
+                    } catch (Exception e) {
+                        System.out.println("Opcion no valida.");
+                    }
+                    break;
+                case 2:
+                    i = 1;
+                    for (Vehiculo veh: vMant){
+                        System.out.println("Seleccione Vehiculo: ");
+                        System.out.println(i + ".- " + veh.datosMant());
+                    }
+                    try {
+                        op = scanner.nextInt();
+                        op = op - 1;
+                        estadoVehiculo(vMant.get(op));
+                    } catch (Exception e) {
+                        System.out.println("Opcion no valida.");
+                    }
+                    break;
+                case 3:
+                    agregarRepuesto();
+                    break;
+                default:
+                    System.out.println("Opcion no valida.");
+            }
+        } while (opc != 8);
+    }   
 }
