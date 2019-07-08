@@ -69,7 +69,11 @@ public class Principal {
                     break;
                 case "Vendedor":
                     login=Menu.menuVendedor((Vendedor) user, stock);
-
+                case "Supervisor":
+                     // aqui unir
+                case "JefeTaller":
+                     // aqui unir
+    
             }
         }
         }while(login==true);

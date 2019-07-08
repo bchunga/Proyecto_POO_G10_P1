@@ -267,6 +267,7 @@ public class JefeTaller extends Usuario{
     }
     
     public void menuJefeTaller() {
+        
         int opc = 0;
       
         do {
