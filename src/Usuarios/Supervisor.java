@@ -616,7 +616,7 @@ public class Supervisor extends Usuario {
     /**
      * @return the solicitudesCompra
      */
-    public ArrayList getSolicitudesCompra() {
+    public ArrayList<Compra> getSolicitudesCompra() {
         return solicitudesCompra;
     }
 
@@ -627,7 +627,7 @@ public class Supervisor extends Usuario {
         this.solicitudesCompra = solicitudesCompra;
     }
     
-    public void menuSupervisor(){
+    public  void menuSupervisor(){
         //Mostrar slicitudes de compra
         int opc = 0;
         boolean ctrl = false;

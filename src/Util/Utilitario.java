@@ -19,12 +19,12 @@ import java.util.ArrayList;
  */
 public class Utilitario {
 
-    public static Usuario loginUsuario(ArrayList<Cliente> clientes,ArrayList<Vendedor> vendedores,ArrayList<Supervisor> supervisores,JefeTaller jefeTaller, String nombre, String contraseña) {
+    public static Usuario loginUsuario(ArrayList<Cliente> clientes,ArrayList<Vendedor> vendedores,ArrayList<Supervisor> supervisores,ArrayList<JefeTaller> jefeTaller, String nombre, String contraseña) {
         ArrayList<Usuario> users=new ArrayList<>();
         users.addAll(clientes);
         users.addAll(vendedores);
         users.addAll(supervisores);
-        users.add(jefeTaller);
+        users.addAll(jefeTaller);
         Usuario usuario = null;
         try {
             for (Usuario u : users) {
@@ -35,7 +35,7 @@ public class Utilitario {
             }
 
         } catch (Exception e) {
-            System.out.println("Error en el metodo " + e);
+            System.out.println("Usuario no existe" );
         }
         return usuario;
 

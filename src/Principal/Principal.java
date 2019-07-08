@@ -31,11 +31,13 @@ public class Principal {
     public static ArrayList<Cliente> clientes = new ArrayList<Cliente>();
     public static ArrayList<Vendedor> vendedores = new ArrayList<Vendedor>();
     public static ArrayList<Supervisor> supervisores = new ArrayList<Supervisor>();
+    public static ArrayList<JefeTaller> jefeTaller = new ArrayList<JefeTaller>();
+    
     public static ArrayList<Auto> autos = new ArrayList<Auto>();
     public static ArrayList<Motocicleta> motos = new ArrayList<Motocicleta>();
     public static ArrayList<Camion> camiones = new ArrayList<Camion>();
     public static ArrayList<Tractor> tractores = new ArrayList<Tractor>();
-    public static JefeTaller jefeTaller;
+    //public static JefeTaller jefeTaller;
 
     public static ArrayList<Vehiculo> stock = new ArrayList<Vehiculo>();
 
@@ -44,8 +46,9 @@ public class Principal {
      */
     public static void main(String[] args) {
         //Carga de datos
-        Archivo.leerUsuarios(clientes, vendedores, supervisores, jefeTaller);
+        Archivo.leerUsuarios(clientes, vendedores, supervisores,jefeTaller);
         Archivo.leerVehiculos(stock);
+        
         Random r = new Random();
         
         boolean login=false;
@@ -66,17 +69,17 @@ public class Principal {
             System.out.println("Usuario no Existe");
 
         } else {
-            System.out.println("Bienvenido  " + user);
+            System.out.println("Bienvenido  " + user.getNombre());
             switch (user.getRol().toString()) {
                 case "Cliente":
-                    login=Menu.menuCliente((Cliente) user, stock, supervisores.get(r.nextInt(2)), jefeTaller, vendedores);
+                    login=Menu.menuCliente((Cliente) user, stock, supervisores.get(r.nextInt(2)), jefeTaller.get(0), vendedores);
                     break;
                 case "Vendedor":
                     login=Menu.menuVendedor((Vendedor) user, stock);
                 case "Supervisor":
-                     // aqui unir
+                    login= Menu.menuSupervisor((Supervisor)user);
                 case "JefeTaller":
-                     // aqui unir
+                     login=Menu.menuJefeTaller((JefeTaller)user);
     
             }
         }

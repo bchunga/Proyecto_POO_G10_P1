@@ -5,10 +5,17 @@
  */
 package Util;
 
+import Principal.Principal;
+import Solicitudes.Compra;
 import Solicitudes.Cotizacion;
 import Solicitudes.Mantenimiento;
 import Usuarios.Cliente;
 import Usuarios.JefeTaller;
+import static Usuarios.JefeTaller.aceptarMant;
+import static Usuarios.JefeTaller.rechazarMant;
+import static Usuarios.JefeTaller.solicitudesMant;
+import static Usuarios.JefeTaller.vMant;
+import static Usuarios.JefeTaller.vPorEntregar;
 import Usuarios.Supervisor;
 import Usuarios.Vendedor;
 import static Util.Utilitario.consultarVehiculoActivo;
@@ -224,4 +231,185 @@ public class Menu {
       return login;
     }
 
+    
+    public static boolean  menuSupervisor(Supervisor s){
+        //Mostrar slicitudes de compra
+        
+        Scanner scanner = new Scanner(System.in);
+        int opc = 0;
+        boolean ctrl = false;
+        for (Compra compra: s.getSolicitudesCompra()){
+            while (!ctrl) {
+                try{
+                    System.out.println(compra.toString());
+                    System.out.println("1.- Aprobar Solicitud");
+                    System.out.println("2.- Rechazar Solicitud");
+                    System.out.println("8.- Salir");
+                    opc = scanner.nextInt();
+                    switch (opc) {
+                        case 1:
+                            s.aprobarCompra(compra);
+                            ctrl = true;
+                            break;
+                        case 2:
+                            System.out.print("Motivo rechazo: ");
+                            String motivo = scanner.nextLine();
+                            s.rechazarCompra(compra, motivo);
+                            ctrl = true;
+                            break;
+                        case 3:
+                            ctrl = true;
+                            break;
+                        default:
+                            System.out.println("Opcion no valida.");
+                            ctrl = false;
+                    }
+                } catch (Exception e) {
+                    System.out.println("Opcion no valida.");
+                } 
+            }
+        }
+        //Extras
+        opc = 0;
+         boolean login=false;
+        do {
+           
+            System.out.println("---------------------------------------\n"
+                    + "\tMENU SUPERVISOR\n"
+                    + "---------------------------------------\n"
+                    + "Opciones:\n"
+                    + "1. Registrar nuevo vehiculo\n"
+                    + "2. Modificar informacion de vendedores\n"
+                    + "3. Mostrar vehiculos en mantenimiento\n"
+                    + "4. Cerrar Sesión\n"
+                    + "Ingrese un número para seleccionar opción:");
+
+            Scanner sc = new Scanner(System.in);
+            try{
+                opc = sc.nextInt();
+                int i;
+                int op = 0;
+                switch (opc) {
+                    case 1:
+                        s.nuevoVehiculo(Principal.autos , Principal.motos, Principal.tractores, Principal.camiones);
+                        break;
+                    case 2:
+                        s.modificarEmpleado(Principal.vendedores);
+                        break;
+                    case 3:
+                        s.vehiculosMantenimiento();
+                        break;
+                    case 4:
+                        login=true;
+                        break;            
+
+                    default:
+                        System.out.println("Opcion no valida.");
+                        break;
+                
+                }
+            } catch (Exception e) {
+                System.out.println("Opcion no valida.");
+            }
+        } while (opc != 4 & opc != 5);
+    return login;
+    }
+    
+    public static boolean menuJefeTaller(JefeTaller j) {
+        Scanner scanner = new Scanner(System.in);
+        int opc = 0;
+        boolean ctrl = false;
+        for (Mantenimiento mant: j.getSolicitudesMant()){
+            while (!ctrl) {
+                try{
+                    System.out.println(mant.toString());
+                    System.out.println("1.- Aprobar Solicitud");
+                    System.out.println("2.- Rechazar Solicitud");
+                    System.out.println("3.- Salir");
+                    opc = scanner.nextInt();
+                    switch (opc) {
+                        case 1:
+                            JefeTaller.aceptarMant(mant);
+                            ctrl = true;
+                            break;
+                        case 2:
+                            System.out.print("Motivo rechazo: ");
+                            String motivo = scanner.nextLine();
+                            JefeTaller.rechazarMant(mant, motivo);
+                            ctrl = true;
+                            break;
+                        case 3:
+                            ctrl = true;
+                            break;
+                        default:
+                            System.out.println("Opcion no valida.");
+                            ctrl = false;
+                    }
+                } catch (Exception e) {
+                    System.out.println("Opcion no valida.");
+                } 
+            }
+        }
+        
+        opc = 0;
+        boolean login = false;
+        do {
+            
+            System.out.println("---------------------------------------\n"
+                    + "\tMENU JEFE TALLER\n"
+                    + "---------------------------------------\n"
+                    + "Opciones:\n"
+                    + "1. Entregar Vehiculo\n"
+                    + "2. Administrar Vehiculos\n"
+                    + "3. Agregar Repuesto\n"
+                    + "4. Cerrar Sesión\n"
+                    + "5. Salir\n"
+                    + "Ingrese un número para seleccionar opción:");
+
+            Scanner sc = new Scanner(System.in);
+            opc = sc.nextInt();
+            int i;
+            int op = 0;
+            switch (opc) {
+                case 1:
+                    i = 1;
+                    for (Vehiculo veh: JefeTaller.vMant){
+                        System.out.println(i + ".- " + veh.datosMant());
+                    }
+                     
+                    try {
+                        System.out.println("Seleccione Vehiculo: ");
+                        op = scanner.nextInt();
+                        op = op - 1;
+                        j.entregarVehiculo(JefeTaller.vPorEntregar.get(op));
+                    } catch (Exception e) {
+                        System.out.println("Opcion no valida.");
+                    }
+                    break;
+                case 2:
+                    i = 1;
+                    for (Vehiculo veh: JefeTaller.vMant){
+                        System.out.println("Seleccione Vehiculo: ");
+                        System.out.println(i + ".- " + veh.datosMant());
+                    }
+                    try {
+                        op = scanner.nextInt();
+                        op = op - 1;
+                        j.estadoVehiculo(JefeTaller.vMant.get(op));
+                    } catch (Exception e) {
+                        System.out.println("Opcion no valida.");
+                    }
+                    break;
+                case 3:
+                    j.agregarRepuesto();
+                    break;
+                case 4:
+                    login= true;
+                    break;    
+                default:
+                    System.out.println("Opcion no valida.");
+            }
+        } while (opc != 4 & opc != 5);
+    return login;
+    }
 }

@@ -26,6 +26,11 @@ public class JefeTaller extends Usuario{
     public static ArrayList<Vehiculo> vPorEntregar;
     public static ArrayList<ArrayList> repuestosUsados;
 
+    public JefeTaller() {
+        
+            }
+
+    
     public JefeTaller(ArrayList certificadosTecnicos, ArrayList solicitudesMant, ArrayList vMant, ArrayList vPorEntregar, String dni, String nombre, String usuario, String pw) {
         super(dni, nombre, usuario, pw, RolUsuario.JefeTaller);
         this.certificadosTecnicos = certificadosTecnicos;
@@ -33,8 +38,50 @@ public class JefeTaller extends Usuario{
         this.vMant = vMant;
         this.vPorEntregar = vPorEntregar;
     }
+
+    public Scanner getScanner() {
+        return scanner;
+    }
+
+    public void setScanner(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+    public ArrayList getCertificadosTecnicos() {
+        return certificadosTecnicos;
+    }
+
+    public void setCertificadosTecnicos(ArrayList certificadosTecnicos) {
+        this.certificadosTecnicos = certificadosTecnicos;
+    }
+
+    public static ArrayList<Vehiculo> getvMant() {
+        return vMant;
+    }
+
+    public static void setvMant(ArrayList<Vehiculo> vMant) {
+        JefeTaller.vMant = vMant;
+    }
+
+    public static ArrayList<Vehiculo> getvPorEntregar() {
+        return vPorEntregar;
+    }
+
+    public static void setvPorEntregar(ArrayList<Vehiculo> vPorEntregar) {
+        JefeTaller.vPorEntregar = vPorEntregar;
+    }
+
+    public static ArrayList<ArrayList> getRepuestosUsados() {
+        return repuestosUsados;
+    }
+
+    public static void setRepuestosUsados(ArrayList<ArrayList> repuestosUsados) {
+        JefeTaller.repuestosUsados = repuestosUsados;
+    }
     
-    //Aprovar solicitud de mantenimiento del vehiculo
+    
+
+//Aprovar solicitud de mantenimiento del vehiculo
     public static void aceptarMant(Mantenimiento mant){
         mant.setEstado("Adminito");
         Cliente cliente=mant.getCliente();

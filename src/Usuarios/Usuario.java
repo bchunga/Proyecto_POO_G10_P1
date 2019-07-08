@@ -35,6 +35,9 @@ public class Usuario {
         this.contraseña = pw;
         this.rol=rol;
     }
+
+    public Usuario() {
+    }
     
       public RolUsuario getRol() {
         return rol;

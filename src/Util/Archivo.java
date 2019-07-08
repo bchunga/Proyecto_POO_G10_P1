@@ -22,7 +22,7 @@ import java.util.Arrays;
 
 /**
  *
- * @author kexbl
+ * @author Kevin Blum
  */
 public class Archivo {
     
@@ -82,7 +82,7 @@ public class Archivo {
     
     
      //Leer los usuarios del csv
-    public static void leerUsuarios( ArrayList<Cliente> clientes,ArrayList<Vendedor> vendedores,ArrayList<Supervisor> supervisores, JefeTaller jefeTaller){
+    public static void leerUsuarios( ArrayList<Cliente> clientes,ArrayList<Vendedor> vendedores,ArrayList<Supervisor> supervisores, ArrayList<JefeTaller> arrJefe){
         String csvFile = "src/Usuarios/usuarios.csv";
         String line = "";
         String cvsSplitBy = ";";
@@ -108,7 +108,7 @@ public class Archivo {
                 else if (data[0].equals("JefeTaller")){
                     String[] aux = data[5].split(",");
                     ArrayList cert = new ArrayList<>(Arrays.asList(aux));
-                    jefeTaller = new JefeTaller(cert, new ArrayList<>(), new ArrayList<>(),new ArrayList<>(), data[1], data[2], data[3] , data[4]);
+                    arrJefe.add(new JefeTaller(cert, new ArrayList<>(), new ArrayList<>(),new ArrayList<>(), data[1], data[2], data[3] , data[4]));
                 }
             }
 
