@@ -73,6 +73,13 @@ abstract class Solicitud {
     public void setIdSolicitud(int idSolicitud) {
         this.idSolicitud = idSolicitud;
     }
+
+    @Override
+    public String toString() {
+        return "Solicitud{" + "idSolicitud=" + idSolicitud +  ", fecha=" + fecha + ", estado=" + estado + ", vehiculo=" + vehiculo + '}';
+    }
+
+
     
     
 }

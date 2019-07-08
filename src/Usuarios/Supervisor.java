@@ -21,7 +21,7 @@ public class Supervisor extends Usuario {
     Scanner scanner = new Scanner(System.in);
     
     public Supervisor(ArrayList solicitudesCompra, ArrayList cerfificadosAcademicos, String dni, String nombre, String usuario, String pw) {
-        super(dni, nombre, usuario, pw);
+        super(dni, nombre, usuario, pw, RolUsuario.Supervisor);
         this.solicitudesCompra = solicitudesCompra;
         this.cerfificadosAcademicos = cerfificadosAcademicos;
     }
@@ -61,7 +61,7 @@ public class Supervisor extends Usuario {
     
     
     //Extra: Registro de un nuevo vehiculo al stock
-    public void nuevoVehiculo(){
+    public void nuevoVehiculo(ArrayList<Auto> autos,ArrayList<Motocicleta> motos,ArrayList<Tractor> tractores,ArrayList<Camion> camiones){
         boolean ctrl = false;
         int op=0;
         while(!ctrl){
@@ -228,7 +228,7 @@ public class Supervisor extends Usuario {
                     }
                 }
                 
-                Vehiculo.autos.add(new Auto(asientos, conv, camRetro, precio, marca, modelo, fabricacion, combustible,'4'));
+                autos.add(new Auto(asientos, conv, camRetro, precio, marca, modelo, fabricacion, combustible,'4'));
                 
                 break;
             //Moto
@@ -330,7 +330,7 @@ public class Supervisor extends Usuario {
                     }
                 }
                 
-                Vehiculos.Vehiculo.motos.add(new Motocicleta(categoria, precio, marca, modelo, fabricacion, combustible,'2'));
+                motos.add(new Motocicleta(categoria, precio, marca, modelo, fabricacion, combustible,'2'));
                 
                 break;
             
@@ -447,7 +447,7 @@ public class Supervisor extends Usuario {
                     }
                 }
                 
-                Vehiculos.Vehiculo.camiones.add(new Camion(capCarga, numEjes, precio, marca, modelo, fabricacion, combustible, numRuedas));
+                camiones.add(new Camion(capCarga, numEjes, precio, marca, modelo, fabricacion, combustible, numRuedas));
                 
                 break;
             
@@ -544,7 +544,7 @@ public class Supervisor extends Usuario {
                     }
                 }
                 
-                Vehiculos.Vehiculo.tractores.add(new Tractor(agricola, transmision, precio, marca, modelo, fabricacion, combustible,'4'));
+               tractores.add(new Tractor(agricola, transmision, precio, marca, modelo, fabricacion, combustible,'4'));
                 
                 break;     
         }    
@@ -562,17 +562,17 @@ public class Supervisor extends Usuario {
     }
     
     //Extra modifica datos del empleado
-    public void modificarEmpleado(){
+    public void modificarEmpleado(ArrayList<Vendedor> vendedores){
         boolean ctrl = false;
         int i = 1;
         while (!ctrl) {
-            for (Vendedor vend: Usuario.vendedores){
+            for (Vendedor vend: vendedores){
                 System.out.println(1 + ".- " + vend.getNombre());
             }
             int opVend = 0;
             try{
                 opVend = scanner.nextInt();
-                Vendedor vendedor = Usuario.vendedores.get(opVend - 1);
+                Vendedor vendedor = vendedores.get(opVend - 1);
                 System.out.println("Modificar: ");
                 System.out.println("1.-Nombre");
                 System.out.println("2.-Usuario");

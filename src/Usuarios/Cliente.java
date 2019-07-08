@@ -26,7 +26,7 @@ public class Cliente extends Usuario {
     ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 
     public Cliente(String ocupacion, String ingresosMensuales, ArrayList solicitudesPendientes, ArrayList solicitudesRespondidas, String dni, String nombre, String usuario, String pw) {
-        super(dni, nombre, usuario, pw);
+        super(dni, nombre, usuario, pw, RolUsuario.Cliente) ;
         this.ocupacion = ocupacion;
         this.ingresosMensuales = ingresosMensuales;
         this.solicitudesPendientes = solicitudesPendientes;
@@ -89,6 +89,11 @@ public class Cliente extends Usuario {
     }
 
     public Cotizacion consultarCotizacion(int idCotizacion) {
+         for (Cotizacion c : solicitudesPendientes) {
+            if (idCotizacion == c.getIdSolicitud()) {
+                return c;
+            }
+        }
         for (Cotizacion c : solicitudesRespondidas) {
             if (idCotizacion == c.getIdSolicitud()) {
                 return c;

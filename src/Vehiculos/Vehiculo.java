@@ -11,6 +11,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 /**
  *
  * @author kexbl
@@ -110,10 +111,7 @@ public class Vehiculo {
     private Double precio;
     private String estado;
 
-    public static ArrayList<Auto> autos = new ArrayList<Auto>();
-    public static ArrayList<Camion> camiones = new ArrayList<Camion>();
-    public static ArrayList<Motocicleta> motos = new ArrayList<Motocicleta>();
-    public static ArrayList<Tractor> tractores = new ArrayList<Tractor>();
+
     
     public Vehiculo(Double precio, String marca, String modelo, String fabricacion, String combustible, char numLlnatas) {
         this.marca = marca;
@@ -122,63 +120,11 @@ public class Vehiculo {
         this.combustible = combustible;
         this.numLlnatas = numLlnatas;
         this.precio = precio;
+        this.idVehiculo=generarId();
+        this.estado="A";
     }
     
-    //leer los vehiculo en el csv
-    public void leerVehiculos(){
-        String csvFile = "src/Usuraios/vehiculos.csv";
-        String line = "";
-        String cvsSplitBy = ";";
-
-        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
-
-            while ((line = br.readLine()) != null) {
-
-                // use comma as separator
-                String[] data = line.split(cvsSplitBy);
-                    
-                System.out.println(line);
-                
-                if (data[0].equals("Auto")){
-                    boolean conv ;
-                    boolean camRetro;
-                    
-                    if (data[8].equals("Si")){
-                        conv = true;
-                    } else {
-                        conv = false;
-                    }
-                    
-                    if (data[9].equals("Si")){
-                        camRetro = true;
-                    } else {
-                        camRetro = false;
-                    }
-                    
-                    autos.add(new Auto(data[7].charAt(0), conv, camRetro, Double.parseDouble(data[6]), data[1], data[2], data[3], data[4], data[5].charAt(0)));
-                    
-                } else if (data[0].equals("Camion")) {
-                    camiones.add(new Camion(Double.parseDouble(data[7]), data[8].charAt(0), Double.parseDouble(data[6]), data[1], data[2], data[3], data[4], data[5].charAt(0)));
-                } else if (data[0].equals("Tractor")){
-                    boolean agri;
-                    
-                    if (data[7].equals("Si")){
-                        agri = true;
-                    } else {
-                        agri = false;
-                    }
-                    
-                    tractores.add(new Tractor(agri, data[8], Double.parseDouble(data[6]),data[1], data[2], data[3], data[4], data[5].charAt(0)));
-                }else if (data[0].equals("Motocicleta")){
-                    motos.add(new Motocicleta(data[7], Double.parseDouble(data[6]), data[1], data[2], data[3], data[4], data[5].charAt(0)));
-                }
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    
+  
     //Extra mostrar los datos para la funcion extra de supervisor
     public String datosMant(){
         return "Marca: " + getMarca() + " Modelo: " + getModelo() + "Fabricacion: " + getFabricacion() + "Combustible: "  + getCombustible();
@@ -205,5 +151,14 @@ public class Vehiculo {
     public void setIdVehiculo(int idVehiculo) {
         this.idVehiculo = idVehiculo;
     }
+    
+        public int generarId(){
+        Random r = new Random();
+        int id= r.nextInt(99999);
+        
+        return id;
+    
+    }
+
 
 }

@@ -24,7 +24,7 @@ public class JefeTaller extends Usuario{
     public ArrayList<ArrayList> repuestosUsados;
 
     public JefeTaller(ArrayList certificadosTecnicos, ArrayList solicitudesMant, ArrayList vMant, ArrayList vPorEntregar, String dni, String nombre, String usuario, String pw) {
-        super(dni, nombre, usuario, pw);
+        super(dni, nombre, usuario, pw, RolUsuario.JefeTaller);
         this.certificadosTecnicos = certificadosTecnicos;
         this.solicitudesMant = solicitudesMant;
         this.vMant = vMant;
