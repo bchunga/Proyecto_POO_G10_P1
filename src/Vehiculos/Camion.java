@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  *
- * @author kexbl
+ * @author Kevin Blum
  */
 public class Camion extends Vehiculo {
     protected double capCarga;
@@ -20,5 +20,11 @@ public class Camion extends Vehiculo {
         this.capCarga = capCarga;
         this.numEjes = numEjes;
     }
+
+    @Override
+    public String toString() {
+        return "Camion{" + "capCarga=" + capCarga + ", numEjes=" + numEjes + '}';
+    }
     
+
 }

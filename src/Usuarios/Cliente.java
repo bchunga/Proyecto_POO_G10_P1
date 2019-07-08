@@ -69,10 +69,13 @@ public class Cliente extends Usuario {
     public Cotizacion solicitarCotizacion( ArrayList<Vendedor> vendedores,Vehiculo vehiculo) {
         Random r = new Random();
         int vendedorAleatorio = r.nextInt(vendedores.size());
-
-        Cotizacion c = new Cotizacion(vendedores.get(vendedorAleatorio), this, new Date(), vehiculo);
+    
+        Vendedor ven= vendedores.get(vendedorAleatorio);
+        Cotizacion c = new Cotizacion(ven, this, new Date(), vehiculo);
+        ven.getSolicitudesCotizacion().add(c);
         solicitudesPendientes.add(c);
-        System.out.println("Se generó una cotización exsitosamente con Codigo " + c.getIdSolicitud());
+        
+        System.out.println("Se generó una cotización exsitosamente con Codigo " + c.getIdSolicitud()+ " Vendedor: "+ ven.getUsuario());
         return c;
     }
 

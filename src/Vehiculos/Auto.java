@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  *
- * @author kexbl
+ * @author Kevin Blum
  */
 public class Auto extends Vehiculo {
     protected char numAsientos;
@@ -21,6 +21,11 @@ public class Auto extends Vehiculo {
         this.numAsientos = numAsientos;
         this.convertible = convertible;
         this.camaraRetro = camaraRetro;
+    }
+
+    @Override
+    public String toString() {
+        return "Auto{" + "numAsientos=" + numAsientos + ", convertible=" + convertible + ", camaraRetro=" + camaraRetro + '}';
     }
     
 }

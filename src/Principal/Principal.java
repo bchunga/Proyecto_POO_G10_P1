@@ -32,20 +32,22 @@ public class Principal {
     public static ArrayList<Vendedor> vendedores = new ArrayList<Vendedor>();
     public static ArrayList<Supervisor> supervisores = new ArrayList<Supervisor>();
     public static JefeTaller jefeTaller;
- 
+
     public static ArrayList<Vehiculo> stock = new ArrayList<Vehiculo>();
-    
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         //Carga de datos
-        Archivo.leerUsuarios(clientes, vendedores,supervisores,jefeTaller);
+        Archivo.leerUsuarios(clientes, vendedores, supervisores, jefeTaller);
         Archivo.leerVehiculos(stock);
-       Random r = new Random();
+        Random r = new Random();
         
-        
-         System.out.println("---------------------------------------\n"
+        boolean login=false;
+
+        do{
+        System.out.println("---------------------------------------\n"
                 + "\tSISTEMA CONCESIONARIA\n"
                 + "---------------------------------------\n");
         Scanner sc = new Scanner(System.in);
@@ -54,21 +56,25 @@ public class Principal {
         System.out.println("Contraseña: ");
         String contraseña = sc.next();
 
-       Usuario user= Utilitario.loginUsuario(clientes, vendedores,supervisores,jefeTaller, usuario, contraseña);
-       
-       if(user==null){
-           System.out.println("Usuario no Existe");
-       
-       }else{
-           System.out.println("Bienvenido  " + user);
-           switch (user.getRol().toString()){
-               case "Cliente":
-                   Menu.menuCliente((Cliente)user, stock, supervisores.get(r.nextInt(2)), jefeTaller, vendedores);
-                   
-                   
-        }
+        Usuario user = Utilitario.loginUsuario(clientes, vendedores, supervisores, jefeTaller, usuario, contraseña);
+
+        if (user == null) {
+            System.out.println("Usuario no Existe");
+
+        } else {
+            System.out.println("Bienvenido  " + user);
+            switch (user.getRol().toString()) {
+                case "Cliente":
+                    login=Menu.menuCliente((Cliente) user, stock, supervisores.get(r.nextInt(2)), jefeTaller, vendedores);
+                    break;
+                case "Vendedor":
+                    login=Menu.menuVendedor((Vendedor) user, stock);
+
             }
-    
+        }
+        }while(login==true);
+          System.out.println(
+                "Fin del programa");
     }
-    
+
 }

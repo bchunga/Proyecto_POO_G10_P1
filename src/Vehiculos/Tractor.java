@@ -20,5 +20,10 @@ public class Tractor extends Vehiculo {
         this.agricola = agricola;
         this.transmision = transmision;
     }
+
+    @Override
+    public String toString() {
+        return "Tractor{" + "agricola=" + agricola + ", transmision=" + transmision + '}';
+    }
     
 }

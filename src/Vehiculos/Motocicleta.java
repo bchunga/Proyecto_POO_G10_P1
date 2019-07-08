@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  *
- * @author kexbl
+ * @author Kevin Blum
  */
 public class Motocicleta extends Vehiculo {
     protected String categoria;
@@ -18,5 +18,11 @@ public class Motocicleta extends Vehiculo {
         super(precio, marca, modelo, fabricacion, combustible, numLlnatas);
         this.categoria = categoria;
     }
+
+    @Override
+    public String toString() {
+        return "Motocicleta{" + "categoria=" + categoria + '}';
+    }
     
+
 }

@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.Random;
 /**
  *
- * @author kexbl
+ * @author Kevin Blum
  */
 public class Vehiculo {
 

@@ -21,12 +21,13 @@ import java.util.Scanner;
  * @author kexbl
  */
 public class Menu {
-    
-     public static void menuCliente(Cliente c, ArrayList<Vehiculo> vehiculos, Supervisor supervisor, JefeTaller jefetaller,ArrayList<Vendedor> vendedores) {
+
+    public static boolean menuCliente(Cliente c, ArrayList<Vehiculo> vehiculos, Supervisor supervisor, JefeTaller jefetaller, ArrayList<Vendedor> vendedores) {
         int opc = 0;
-      
+        boolean login=false;
+
         do {
-            
+           
             System.out.println("---------------------------------------\n"
                     + "\tMENU CLIENTE\n"
                     + "---------------------------------------\n"
@@ -38,7 +39,9 @@ public class Menu {
                     + "5. Rechazar Cotización\n"
                     + "6. Solicitar Mantenimiento\n"
                     + "7. Consultar Mantenimiento\n"
-                    + "8. Salir\n"
+                    + "8. Cerrar Sesion\n"
+                    + "9. Salir\n"
+                    
                     + "Ingrese un número para seleccionar opción:");
 
             Scanner sc = new Scanner(System.in);
@@ -46,12 +49,8 @@ public class Menu {
             switch (opc) {
                 case 1: {
                     c.consultarStock(vehiculos);
-                    System.out.println("Menu\n"
-                            + "8. Salir\n"
-                            + "Presione cualquier número para Regresar\n"
-                            );
+                    System.out.println("Presione 0 para Regresar\n");
                     opc = sc.nextInt();
-
                     break;
                 }
                 case 2: {
@@ -61,24 +60,18 @@ public class Menu {
                     if (vehiculo == null) {
                         System.out.println("Vehiculo no existe");
                     } else {
-                        c.solicitarCotizacion(vendedores,vehiculo);
+                        c.solicitarCotizacion(vendedores, vehiculo);
                     }
-                    System.out.println("Menu\n"
-                            + "8. Salir\n"
-                            + "Presione cualquier número para Regresar\n"
-                            );
+                    System.out.println("Presione 0 para Regresar\n");
                     opc = sc.nextInt();
                     break;
                 }
                 case 3: {
                     System.out.println("Ingrese el numero de cotizacion a consultar: ");
                     int idCotizacion = sc.nextInt();
-                    c.consultarCotizacion(idCotizacion);
-                    System.out.println(c);
-                    System.out.println("Menu\n"
-                            + "8. Salir\n"
-                            + "Presione cualquier número para Regresar\n"
-                            );
+                    Cotizacion cot = c.consultarCotizacion(idCotizacion);
+                    System.out.println(cot);
+                    System.out.println("Presione 0 para Regresar\n");                    
                     opc = sc.nextInt();
                     break;
                 }
@@ -92,10 +85,7 @@ public class Menu {
                         c.soliciticarCompra(supervisor, cos);
                         System.out.println("La solicitud de compra ha sido enviada exitosamente");
                     }
-                    System.out.println("Menu\n"
-                            + "8. Salir\n"
-                            + "Presione cualquier número para Regresar\n"
-                            ); 
+                   System.out.println("Presione 0 para Regresar\n"); 
                     opc = sc.nextInt();
                     break;
                 }
@@ -109,10 +99,7 @@ public class Menu {
                         c.rechazarCotizacion(c.getSolicitudesPendientes(), cosR);
                         System.out.println("La solicitud de compra ha sido rechazada exitosamente");
                     }
-                    System.out.println("Menu\n"
-                            + "8. Salir\n"
-                            +"Presione cualquier número para Regresar\n"
-                            );
+                  System.out.println("Presione 0 para Regresar\n"); 
                     opc = sc.nextInt();
                     break;
                 }
@@ -128,10 +115,7 @@ public class Menu {
                         c.solicitarMantenimiento(jefetaller, vehiculo1);
                         System.out.println("La solicitud de mantenimiento ha sido enviaada exitosamente");
                     }
-                    System.out.println("Menu\n"
-                            + "8. Salir\n"
-                            + "Presione cualquier número para Regresar\n"
-                            );
+                  System.out.println("Presione 0 para Regresar\n");
                     opc = sc.nextInt();
                     break;
                 }
@@ -145,18 +129,99 @@ public class Menu {
                     } else {
                         System.out.println("El estado de mantenimiento es " + m.getEstado());
                     }
-                    System.out.println("Menu\n"
-                            + "8. Salir\n"
-                            + "Presione cualquier número para Regresar\n"
-                            );
+                    System.out.println("Presione 0 para Regresar\n");
+                    
                     opc = sc.nextInt();
 
                     break;
                 }
+                case 8:
+                    login=true;
+                    break;
             }
-        } while (opc != 8);
-        System.out.println("Fin del programa");
+        } while (opc != 9 && opc!=8);
+        
+        return login;
     }
 
-    
+    public static boolean menuVendedor( Vendedor v,ArrayList<Vehiculo> vehiculos) {
+        int opc = 0;
+        boolean login=false;
+        do {
+
+            System.out.println("---------------------------------------\n"
+                    + "\tMENU VENDEDOR\n"
+                    + "---------------------------------------\n"
+                    + "Opciones:\n"
+                    + "1. Consultar Cotizaciones\n"
+                    + "2. Aprobar Cotización\n"
+                    + "3. Rechazar Cotización\n"
+                    + "4. Consultar vehiculo\n"
+                    + "5. Cerrar Sesión\n"
+                    + "6. Salir\n"
+                    + "Ingrese un número para seleccionar opción:");
+
+            Scanner sc = new Scanner(System.in);
+            opc = sc.nextInt();
+            switch (opc) {
+                case 1: {
+                    System.out.println("Id Cotizacion" + "\tFecha" + "\tCliente" + "\tVehiculo");
+
+                    for (Cotizacion cos : v.getSolicitudesCotizacion()) {
+
+                        System.out.println(cos.getIdSolicitud() + "\t" + cos.getFecha() + "\t" + cos.getCliente().getNombre() + "\t" + cos.getVehiculo().toString());
+
+                    }
+
+                    System.out.println("Presione 0 para Regresar\n");
+                    opc = sc.nextInt();
+
+                    break;
+                }
+                case 2: {
+                    System.out.println("Ingrese el Id de cotizacion a aprobar: ");
+                    int idCotizacionAprobar = sc.nextInt();
+                    Cotizacion cot1= v.aprobarCotizacion(idCotizacionAprobar);
+                    if (cot1 == null) {
+                        System.out.println("Cotizacion no existe");
+                    } else {
+                        System.out.println("Solicitud de cotizacion ha sido aprobada");
+                    }
+                    
+                    System.out.println("Presione 0 para Regresar\n");
+                    opc = sc.nextInt();
+                    break;
+                }
+                case 3: {
+                    System.out.println("Ingrese el Id de cotizacion a rechazar: ");
+                    int idCotizacionrechazar = sc.nextInt();
+                    System.out.println("Ingrese el motivo de rechazo: ");
+                    String motivo = sc.next();
+                    
+                    Cotizacion cot2= v.rechazarCotizacion( idCotizacionrechazar, motivo);
+                    if (cot2 == null) {
+                        System.out.println("Cotizacion no existe");
+                    } else {
+                        System.out.println("Solicitud de cotizacion ha sido rechazada");
+                    }
+                   System.out.println("Presione 0 para Regresar\n");
+                    opc = sc.nextInt();
+                    break;
+                }
+                case 4: {
+                    v.consultarVehiculo(vehiculos);
+                     System.out.println("Presione 0 para Regresar\n");
+                    opc = sc.nextInt();
+                    break;
+                }
+                
+                case 5:
+                    login=true;
+                    break;            }
+
+        } while (opc
+                != 5 && opc!=6);
+      return login;
+    }
+
 }

@@ -14,11 +14,12 @@ import java.util.Random;
  * @author Kevin Blum
  */
 abstract class Solicitud {
-      private int idSolicitud;
+    private int idSolicitud;
     private Cliente cliente;
     private Date fecha;
     private String estado;
     private Vehiculo vehiculo;
+    private String motivo;
     
     public Solicitud( Cliente cliente, Date fecha, Vehiculo vehiculo) {
         this.idSolicitud= generarId();
@@ -76,7 +77,24 @@ abstract class Solicitud {
 
     @Override
     public String toString() {
-        return "Solicitud{" + "idSolicitud=" + idSolicitud +  ", fecha=" + fecha + ", estado=" + estado + ", vehiculo=" + vehiculo + '}';
+        String sol= "Solicitud:" + "idSolicitud=" + idSolicitud +  ", fecha=" + fecha + ", estado=" + estado;
+        if(estado.equals("Rechazado"))
+            sol+= "motivo=" + motivo;
+        return sol;
+    }
+
+    /**
+     * @return the motivo
+     */
+    public String getMotivo() {
+        return motivo;
+    }
+
+    /**
+     * @param motivo the motivo to set
+     */
+    public void setMotivo(String motivo) {
+        this.motivo = motivo;
     }
 
 

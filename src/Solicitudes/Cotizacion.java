@@ -14,7 +14,7 @@ import java.util.Date;
  * @author Kevin Blum
  */
 public class Cotizacion extends Solicitud {
-       private Vendedor idVendedor;
+    private Vendedor idVendedor;
     private double precio;
 
     public Cotizacion(Vendedor idVendedor, Cliente cliente, Date fecha, Vehiculo vehiculo) {
@@ -45,7 +45,12 @@ public class Cotizacion extends Solicitud {
 
     @Override
     public String toString() {
-        return super.toString()+ "Cotizacion{" + "idVendedor=" + idVendedor + ", precio=" + precio + '}';
+        String tmp=super.toString()  + "idVendedor=" + idVendedor;
+        if(super.getEstado().equals("Aprobado")){
+           tmp += " precio=" + precio;
+           tmp += " Especificaciones Técnicas Vehículo=" + super.getVehiculo();  
+        }
+        return tmp ;
     }
 
      
