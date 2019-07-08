@@ -7,15 +7,19 @@ package Usuarios;
 
 import java.util.ArrayList;
 import Solicitudes.Compra;
-import Usuarios.*;
 import Vehiculos.*;
 import java.util.Scanner;
+import Principal.Principal;
+import Solicitudes.Mantenimiento;
+import static Usuarios.JefeTaller.aceptarMant;
+import static Usuarios.JefeTaller.rechazarMant;
+import static Usuarios.JefeTaller.solicitudesMant;
 /**
  *
  * @author Kevin Blum
  */
 public class Supervisor extends Usuario {
-    private ArrayList solicitudesCompra;
+    private ArrayList<Compra> solicitudesCompra;
     private ArrayList cerfificadosAcademicos;
     
     Scanner scanner = new Scanner(System.in);
@@ -621,6 +625,80 @@ public class Supervisor extends Usuario {
      */
     public void setSolicitudesCompra(ArrayList solicitudesCompra) {
         this.solicitudesCompra = solicitudesCompra;
+    }
+    
+    public void menuSupervisor(){
+        //Mostrar slicitudes de compra
+        int opc = 0;
+        boolean ctrl = false;
+        for (Compra compra: solicitudesCompra){
+            while (!ctrl) {
+                try{
+                    System.out.println(compra.toString());
+                    System.out.println("1.- Aprobar Solicitud");
+                    System.out.println("2.- Rechazar Solicitud");
+                    System.out.println("8.- Salir");
+                    opc = scanner.nextInt();
+                    switch (opc) {
+                        case 1:
+                            aprobarCompra(compra);
+                            ctrl = true;
+                            break;
+                        case 2:
+                            System.out.print("Motivo rechazo: ");
+                            String motivo = scanner.nextLine();
+                            rechazarCompra(compra, motivo);
+                            ctrl = true;
+                            break;
+                        case 3:
+                            ctrl = true;
+                            break;
+                        default:
+                            System.out.println("Opcion no valida.");
+                            ctrl = false;
+                    }
+                } catch (Exception e) {
+                    System.out.println("Opcion no valida.");
+                } 
+            }
+        }
+        //Extras
+        opc = 0;
+        do {
+            
+            System.out.println("---------------------------------------\n"
+                    + "\tMENU SUPERVISOR\n"
+                    + "---------------------------------------\n"
+                    + "Opciones:\n"
+                    + "1. Registrar nuevo vehiculo\n"
+                    + "2. Modificar informacion de vendedores\n"
+                    + "3. Mostrar vehiculos en mantenimiento\n"
+                    + "8. Salir\n"
+                    + "Ingrese un número para seleccionar opción:");
+
+            Scanner sc = new Scanner(System.in);
+            try{
+                opc = sc.nextInt();
+                int i;
+                int op = 0;
+                switch (opc) {
+                    case 1:
+                        nuevoVehiculo(Principal.autos , Principal.motos, Principal.tractores, Principal.camiones);
+                        break;
+                    case 2:
+                        modificarEmpleado(Principal.vendedores);
+                        break;
+                    case 3:
+                        vehiculosMantenimiento();
+                        break;
+                    default:
+                        System.out.println("Opcion no valida.");
+                        break;
+                }
+            } catch (Exception e) {
+                System.out.println("Opcion no valida.");
+            }
+        } while (opc != 8);
     }
     
 }

@@ -31,6 +31,10 @@ public class Principal {
     public static ArrayList<Cliente> clientes = new ArrayList<Cliente>();
     public static ArrayList<Vendedor> vendedores = new ArrayList<Vendedor>();
     public static ArrayList<Supervisor> supervisores = new ArrayList<Supervisor>();
+    public static ArrayList<Auto> autos = new ArrayList<Auto>();
+    public static ArrayList<Motocicleta> motos = new ArrayList<Motocicleta>();
+    public static ArrayList<Camion> camiones = new ArrayList<Camion>();
+    public static ArrayList<Tractor> tractores = new ArrayList<Tractor>();
     public static JefeTaller jefeTaller;
 
     public static ArrayList<Vehiculo> stock = new ArrayList<Vehiculo>();
