@@ -308,6 +308,7 @@ public class Menu {
                         break;
                 
                 }
+                
             } catch (Exception e) {
                 System.out.println("Opcion no valida.");
             }
@@ -317,6 +318,10 @@ public class Menu {
     
     public static boolean menuJefeTaller(JefeTaller j) {
         Scanner scanner = new Scanner(System.in);
+        if (j.getSolicitudesMant().size() == 0){
+            System.out.println("No hay solicitudes pendientes.");
+        }
+        
         int opc = 0;
         boolean ctrl = false;
         for (Mantenimiento mant: j.getSolicitudesMant()){
@@ -368,13 +373,14 @@ public class Menu {
 
             Scanner sc = new Scanner(System.in);
             opc = sc.nextInt();
-            int i;
+            int i = 1;
             int op = 0;
             switch (opc) {
                 case 1:
-                    i = 1;
+                    
                     for (Vehiculo veh: JefeTaller.vMant){
                         System.out.println(i + ".- " + veh.datosMant());
+                        i = i + 1;
                     }
                      
                     try {
@@ -387,7 +393,7 @@ public class Menu {
                     }
                     break;
                 case 2:
-                    i = 1;
+                    
                     for (Vehiculo veh: JefeTaller.vMant){
                         System.out.println("Seleccione Vehiculo: ");
                         System.out.println(i + ".- " + veh.datosMant());
@@ -396,10 +402,11 @@ public class Menu {
                         op = scanner.nextInt();
                         op = op - 1;
                         j.estadoVehiculo(JefeTaller.vMant.get(op));
+                        break;
                     } catch (Exception e) {
                         System.out.println("Opcion no valida.");
                     }
-                    break;
+                    
                 case 3:
                     j.agregarRepuesto();
                     break;

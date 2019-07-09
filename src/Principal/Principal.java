@@ -48,6 +48,8 @@ public class Principal {
         //Carga de datos
         Archivo.leerUsuarios(clientes, vendedores, supervisores,jefeTaller);
         Archivo.leerVehiculos(stock);
+        JefeTaller.leerVehiculosMantenimiento(JefeTaller.vMant);
+        JefeTaller.leerVehiculosPorEntregar(JefeTaller.vPorEntregar);
         
         Random r = new Random();
         

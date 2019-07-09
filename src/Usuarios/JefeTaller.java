@@ -155,12 +155,14 @@ public class JefeTaller extends Usuario{
     //Entrega del vehiculo
     public void entregarVehiculo(Vehiculo vehiculo){
         this.vPorEntregar.remove(vehiculo);
+        System.out.println("Vehiculo entregado.");
     }
     
     //Extra permite registrar repuestos usados
     public void agregarRepuesto(){
         ArrayList aux = new ArrayList();
         int i = 1;
+        if (JefeTaller.vMant.size() > 0){
         for (Vehiculo veh: JefeTaller.vMant){
             System.out.println(i + ", " + veh.datosMant());
             i = i + 1;
@@ -172,6 +174,7 @@ public class JefeTaller extends Usuario{
             try{
                 opVeh = scanner.nextInt();
                 opVeh = opVeh - 1;
+                ctrl = true;
             } catch (Exception e) {
                 System.out.println("Opcion no valida.");
             }
@@ -183,7 +186,7 @@ public class JefeTaller extends Usuario{
         ctrl = false;
         double precio = 0;
         while (!ctrl){
-           System.out.print("Precio");
+           System.out.print("Precio: ");
            try {
              precio = scanner.nextDouble(); 
              ctrl = true;
@@ -198,6 +201,9 @@ public class JefeTaller extends Usuario{
         aux.add(desc);
         
         repuestosUsados.add(aux);
+        } else {
+            System.out.println("No hay vehiculos disponibles");
+        }
     }
       public ArrayList<Mantenimiento> getSolicitudesMant() {
         return solicitudesMant;
@@ -318,6 +324,9 @@ public class JefeTaller extends Usuario{
     public void menuJefeTaller() {
         int opc = 0;
         boolean ctrl = false;
+        if (solicitudesMant.size() == 0){
+            System.out.println("No hay solicitudes pendientes");
+        }
         for (Mantenimiento mant: solicitudesMant){
             while (!ctrl) {
                 try{
